@@ -1,4 +1,39 @@
-.weather{
+/* Overall container for the layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Left panel for past visitors */
+.left-panel {
+    width: 25%;
+    background-color: #2f4680;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.left-panel h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.left-panel ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.left-panel li {
+    font-size: 18px;
+}
+
+/* Central panel for weather info */
+.weather {
     place-self: center;
     padding: 40px;
     border-radius: 10px;
@@ -6,16 +41,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}   
+    width: 40%;
+}
 
-
-.search-bar{
+.search-bar {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.search-bar input{
+.search-bar input {
     height: 50px;
     border: none;
     outline: none;
@@ -26,7 +61,7 @@
     font-size: 18px;
 }
 
-.search-bar img{
+.search-bar img {
     width: 50px;
     padding: 15px;
     border-radius: 50%;
@@ -34,37 +69,68 @@
     cursor: pointer;
 }
 
-weather-icon{
+.weather-icon {
     width: 150px;
     margin: 30px 0;
 }
-.temperature{
-    color:#fff;
+
+.temperature {
+    color: #fff;
     font-size: 80px;
     line-height: 1;
 }
-.location{
+
+.location {
     color: #fff;
     font-size: 40px;
 }
-.weather-data{
+
+.weather-data {
     width: 100%;
     margin-top: 40px;
     color: #fff;
     display: flex;
     justify-content: space-between;
 }
-.weather-data .col{
+
+.weather-data .col {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     font-size: 22px;
 }
-.weather-data .col span{
+
+.weather-data .col span {
     display: block;
     font-size: 16px;
 }
-.weather-data .col img{
+
+.weather-data .col img {
     width: 26px;
     margin-top: 10px;
+}
+
+/* Right panel for search history */
+.right-panel {
+    width: 25%;
+    background-color: #2f4680;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.right-panel h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.right-panel ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.right-panel li {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
