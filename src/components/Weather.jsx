@@ -9,8 +9,10 @@ import rain_icon from '../assets/rain.png';
 import snow_icon from '../assets/snow.png';
 import wind_icon from '../assets/wind.png';
 
-import { database } from './configuration'; // Import the Firebase configuration correctly
-import { ref, onValue, set } from 'firebase/database'; // Import the necessary Firebase functions
+import { getToken } from 'firebase/messaging';
+import { messaging } from "./configuration";
+import { database } from './configuration'; 
+import { ref, onValue, set } from 'firebase/database';
 
 const Weather = () => {
     const inputRef = useRef();
@@ -71,8 +73,25 @@ const Weather = () => {
             setWeatherData(false);
             console.error("Error in fetching weather data");
         }
+
+        if (city.toLowerCase() === 'atlanta') {
+            atlantaNotification();
+        }
     };
 
+    const atlantaNotification = () => {
+        if (Notification.permission !== "denied") {
+            Notification.requestPermission().then((permission) => {
+                if (permission === "granted") {
+                    new Notification("Atlanta", {
+                        body: "Home of Georgia Tech",
+                    });
+                }
+            });
+        }
+    };
+
+    
     // Fetch visitors and search history from Firebase on initial load
     useEffect(() => {
         // Fetch visitors from Firebase
