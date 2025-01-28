@@ -92,36 +92,31 @@ const Weather = () => {
     };
 
     
-    // Fetch visitors and search history from Firebase on initial load
     useEffect(() => {
-        // Fetch visitors from Firebase
         const visitorsRef = ref(database, 'visitors');
         onValue(visitorsRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                setVisitors(Object.values(data)); // Convert object to array for easier rendering
+                setVisitors(Object.values(data)); 
             }
         });
 
-        // Fetch search history from Firebase
         const searchHistoryRef = ref(database, 'search_history');
         onValue(searchHistoryRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                setSearchHistory(Object.values(data)); // Store search history data
+                setSearchHistory(Object.values(data)); 
             }
         });
 
-        
         search("Gold Coast");
 
-    }, []); // Empty dependency array to run only once after the initial render
-
+    }, []);
 
 
     return (
         <div className="container">
-            {/* Left Panel: Past Visitors */}
+            {/* */}
             <div className="left-panel">
                 <h3>Past Visitors</h3>
                 <ul>
@@ -131,7 +126,7 @@ const Weather = () => {
                 </ul>
             </div>
 
-            {/* Central Panel: Weather Info */}
+            {/* */}
             <div className="weather">
                 <div className="search-bar">
                     <input ref={inputRef} type="text" placeholder="Search" />
@@ -163,7 +158,7 @@ const Weather = () => {
                 )}
             </div>
 
-            {/* Right Panel: Search History */}
+            {}
             <div className="right-panel">
                 <h3>Search History</h3>
                 <ul>
