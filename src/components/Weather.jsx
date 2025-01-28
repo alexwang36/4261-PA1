@@ -63,7 +63,6 @@ const Weather = () => {
                 icon: icon
             });
 
-            // Save search history to Firebase
             const searchRef = ref(database, 'search_history');
             const newSearch = set(ref(database, 'search_history/' + city), {
                 city: city,
@@ -91,7 +90,6 @@ const Weather = () => {
         }
     };
 
-    
     useEffect(() => {
         const visitorsRef = ref(database, 'visitors');
         onValue(visitorsRef, (snapshot) => {
