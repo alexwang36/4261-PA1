@@ -8,6 +8,7 @@ import humidity_icon from '../assets/humidity.png';
 import rain_icon from '../assets/rain.png';
 import snow_icon from '../assets/snow.png';
 import wind_icon from '../assets/wind.png';
+import enter_icon from '../assets/enter.png';
 
 import { getToken } from 'firebase/messaging';
 import { messaging } from "./configuration";
@@ -16,6 +17,7 @@ import { ref, onValue, set } from 'firebase/database';
 
 const Weather = () => {
     const inputRef = useRef();
+    const nameRef = useRef();
     const [weatherData, setWeatherData] = useState(false);
     const [visitors, setVisitors] = useState([]);
     const [searchHistory, setSearchHistory] = useState([]);
@@ -90,6 +92,11 @@ const Weather = () => {
         }
     };
 
+    const addName = (name) => {
+        console.log('yo')
+        setVisitors([...visitors, name]);
+    }
+
     useEffect(() => {
         const visitorsRef = ref(database, 'visitors');
         onValue(visitorsRef, (snapshot) => {
@@ -112,8 +119,10 @@ const Weather = () => {
     }, []);
 
 
+
     return (
         <div className="container">
+            
             {/* */}
             <div className="left-panel">
                 <h3>Past Visitors</h3>
@@ -123,7 +132,11 @@ const Weather = () => {
                     ))}
                 </ul>
             </div>
-
+            
+            <div className = "name-input">
+                <input ref={nameRef} type="text" placeholder="Enter Your Name" />
+                <img src={enter_icon} alt="" onClick={() => addName(nameRef.current.value)} />
+            </div>
             {/* */}
             <div className="weather">
                 <div className="search-bar">
